@@ -4,4 +4,4 @@ Qualification round:<br>
 	a. Speaking in Tongues. <br>
 	b. Dancing With the Googlers. <br>
 	c. Recicled Numbres. <br>
-	d. Hall of mirrors <br>	
+	d. Hall of mirrors. <br>	
