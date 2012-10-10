@@ -35,7 +35,6 @@ public class Tongues {
 			line = decodeList.get(i);
 			line = String.format("Case #%1$d: %2$s ", i+1, line);
 			System.out.println(line);			
-			//System.out.println();			
 		}
 		bufferReader.close();
 		inputStreamReader.close();
@@ -77,17 +76,13 @@ public class Tongues {
 		replaceMap.put(new Byte((byte)'q'), new Byte((byte)'z'));
 		List<String> listOut = new ArrayList<String>();
 		for (String stringIn : listIn) {
-			String stringOut = "";
 			byte[] bytes = stringIn.getBytes();
 			for (int i = 0; i < bytes.length; i++) {
 				if (replaceMap.get(bytes[i])!=null) {
 					bytes[i] = replaceMap.get(bytes[i]);
 				}
 			}
-			stringOut = new String (bytes);
-			listOut.add(stringOut);
-			System.out.println(stringIn);
-			System.out.println(stringOut);
+			listOut.add(new String (bytes));
 		}
 		return listOut;
 	}
