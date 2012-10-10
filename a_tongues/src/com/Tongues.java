@@ -5,10 +5,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-/**
- * 
+/** 
+ * Solution of problem A. Speaking in Tongues
  * @author antonio.diaz.arroyo@gmail.com
- *
+ * @see <a href="http://code.google.com/codejam/contest/1460488/dashboard">Speaking in Tongues</a>
  */
 public class Tongues {
 
