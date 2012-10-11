@@ -55,8 +55,8 @@ public class Googlers {
 		surprising = new Integer(split[1]);
 		scoreReference = new Integer(split[2]);
 		scores = new ArrayList<Integer>();
-		for (int i = 2; i < triplets; i++) {
-			scores.add(Integer.parseInt(split[i]));
+		for (int i = 0; i < triplets; i++) {
+			scores.add(Integer.parseInt(split[i+3]));
 		}
 	}
 
