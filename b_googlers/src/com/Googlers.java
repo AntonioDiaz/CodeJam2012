@@ -79,8 +79,27 @@ public class Googlers {
 		this.surprising = surprising;
 	}
 
-	public int calculateTripletsBestResult(){
-		return -1;
+	public int calculateTripletsBestResult() {
+		int triplets = 0;
+		int surprisings = this.getSurprising();
+		for (Integer myInt : this.getScores()) {
+			int myIntOri = myInt;
+			if (myInt % 3 == 1){
+				 myInt += 2;
+			} else if (myInt % 3 == 2) {
+				myInt += 1;
+			}
+			int result = myInt / 3;
+			if (result>=this.getScoreReference()) {
+				triplets++;
+			} else {
+				if (((myIntOri+4) / 3) >= this.getScoreReference() && surprisings>0){
+					surprising--;
+					triplets++;
+				}
+			}
+		}
+		return triplets;
 	}
 
 	@Override
