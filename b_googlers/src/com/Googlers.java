@@ -28,12 +28,13 @@ public class Googlers {
 	 * @throws IOException
 	 */
 	public static void main(String[] args) throws NumberFormatException, IOException {
-		InputStream inputStream = Googlers.class.getResourceAsStream("B-small-practice.in");
+		InputStream inputStream = Googlers.class.getResourceAsStream("B-large-practice.in");
 		InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
 		BufferedReader br = new BufferedReader(inputStreamReader);
 		int numCases = Integer.parseInt(br.readLine()); 
 		for (int i = 0; i < numCases; i++) {
-			System.out.println(new Googlers(br.readLine()));
+			Googlers googlers = new Googlers(br.readLine());
+			System.out.println(String.format("Case #%1$d: %2$s ", i+1, googlers.calculateTripletsBestResult()));
 		}
 		br.close();
 		inputStreamReader.close();
@@ -79,29 +80,36 @@ public class Googlers {
 		this.surprising = surprising;
 	}
 
-	public int calculateTripletsBestResult() {
+	/**
+	 * Algorithm
+	 * @return
+	 */
+	public int calculateTripletsBestResult(){
 		int triplets = 0;
 		int surprisings = this.getSurprising();
 		for (Integer myInt : this.getScores()) {
-			int myIntOri = myInt;
-			if (myInt % 3 == 1){
-				 myInt += 2;
-			} else if (myInt % 3 == 2) {
-				myInt += 1;
+			int maxResult = myInt / 3;
+			if (myInt % 3 > 0) {
+				maxResult++;
 			}
-			int result = myInt / 3;
-			if (result>=this.getScoreReference()) {
+			if (maxResult >= this.getScoreReference()) {
 				triplets++;
 			} else {
-				if (((myIntOri+4) / 3) >= this.getScoreReference() && surprisings>0){
-					surprising--;
+				/* my be a surprising score */
+				if (surprisings>0 && myInt>0) {
+					if (myInt%3==0 || myInt%3==2) {
+						maxResult++;
+					}
+				}
+				if (maxResult >= this.getScoreReference()) {
 					triplets++;
+					surprisings--;
 				}
 			}
 		}
 		return triplets;
 	}
-
+	
 	@Override
 	public String toString() {
 		return ToStringBuilder.reflectionToString(this);
