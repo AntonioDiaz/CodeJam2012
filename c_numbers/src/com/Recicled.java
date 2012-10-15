@@ -3,6 +3,8 @@ package com;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Problem C. 
@@ -23,7 +25,7 @@ public class Recicled {
 	}
 	
 	/**
-	 * 
+	 * Find the number of recicled pairs.
 	 * @param a
 	 * @param b
 	 * @return
@@ -34,16 +36,21 @@ public class Recicled {
 		int b = Integer.parseInt(split[1]);
 		int bDigits = String.valueOf(b).length();
 		int pairsFounds = 0;
-		for (int i = a; i < b; i++) {
+		Set<String> mySet = null;
+		for (int n = a; n < b; n++) {
+			mySet = new HashSet<String>();
 			for (int j=1; j<bDigits; j++){
 				/* if i=1 --> 119 -> 911 */ 
 				/* if i=2 --> 119 -> 191 */ 
-				int newA = i%(int)(Math.pow(10,j));
-				newA *= Math.pow(10,(bDigits-j));
-				newA += i/Math.pow(10,j);
-				int newADigits = String.valueOf(newA).length();
-				if (i<newA && newA<=b && bDigits==newADigits){
-					pairsFounds++;
+				int m = n%(int)(Math.pow(10,j));
+				m *= Math.pow(10,(bDigits-j));
+				m += n/Math.pow(10,j);
+				if (n<m && m<=b && bDigits==String.valueOf(m).length()){
+					String myStr = String.valueOf(n) + String.valueOf(m);
+					if (!mySet.contains(myStr)) {
+						pairsFounds++;
+						mySet.add(myStr);						
+					}
 				}
 			}
 		}
