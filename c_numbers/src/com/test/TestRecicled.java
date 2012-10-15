@@ -24,13 +24,13 @@ public class TestRecicled extends TestCase {
 	
 	public void testCalculateRecicledPairs03(){
 		String inStr = "100 500";
-		int result = 0;
+		int result = 156;
 		assertEquals(result, Recicled.calculateRecicledPairs(inStr));
 	}
 	
 	public void testCalculateRecicledPairs04(){
 		String inStr = "1111 2222";
-		int result = 0;
+		int result = 287;
 		assertEquals(result, Recicled.calculateRecicledPairs(inStr));
 	}
 }
