@@ -16,5 +16,7 @@ public class Mirror {
 
 	}
 	
-	
+	public static final int calculateReflections(String strIn){
+		return -1;
+	}
 }
